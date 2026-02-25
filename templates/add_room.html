@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Add Room</h3>
+
+<form method="POST">
+    <input type="number" name="room_no" class="form-control mb-2" placeholder="Room Number" required>
+    <input type="text" name="room_type" class="form-control mb-2" placeholder="Room Type" required>
+    <input type="number" name="price" class="form-control mb-2" placeholder="Price" required>
+    <button class="btn btn-primary">Add Room</button>
+</form>
+
+{% endblock %}

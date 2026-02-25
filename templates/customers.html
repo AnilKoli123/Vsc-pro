@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Customers</h3>
+
+<table class="table table-striped">
+<tr>
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Room</th>
+    <th>Price</th>
+    <th>Actions</th>
+</tr>
+
+{% for row in data %}
+<tr>
+    <td>{{ row[0] }}</td>
+    <td>{{ row[1] }}</td>
+    <td>{{ row[2] }}</td>
+    <td>₹{{ row[3] }}</td>
+    <td>
+        <a href="/bill/{{ row[2] }}" class="btn btn-sm btn-info">Bill</a>
+        <a href="/checkout/{{ row[2] }}" class="btn btn-sm btn-danger">Checkout</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

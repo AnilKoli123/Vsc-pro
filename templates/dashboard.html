@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-4">Dashboard</h2>
+
+<!-- Search -->
+<form class="mb-3">
+    <input type="text" name="search" class="form-control" placeholder="Search by Room Type">
+</form>
+
+<!-- Cards -->
+<div class="row text-center mb-4">
+    <div class="col-md-4">
+        <div class="card shadow card-animate bg-primary text-white">
+            <div class="card-body">
+                <h5>Total Rooms</h5>
+                <h2>{{ total }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow card-animate bg-success text-white">
+            <div class="card-body">
+                <h5>Available</h5>
+                <h2>{{ available }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow card-animate bg-danger text-white">
+            <div class="card-body">
+                <h5>Booked</h5>
+                <h2>{{ booked }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chart -->
+<canvas id="myChart"></canvas>
+
+<script>
+const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Available', 'Booked'],
+        datasets: [{
+            data: [{{ available }}, {{ booked }}],
+            borderWidth: 1
+        }]
+    }
+});
+</script>
+
+<hr>
+
+<!-- Rooms Table -->
+<table class="table table-bordered table-hover">
+<tr>
+    <th>Room No</th>
+    <th>Type</th>
+    <th>Price</th>
+    <th>Status</th>
+</tr>
+
+{% for room in rooms %}
+<tr>
+    <td>{{ room[0] }}</td>
+    <td>{{ room[1] }}</td>
+    <td>₹{{ room[2] }}</td>
+    <td>{{ room[3] }}</td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

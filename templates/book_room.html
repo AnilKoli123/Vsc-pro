@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Book Room</h3>
+
+<form method="POST">
+    <input type="text" name="name" class="form-control mb-2" placeholder="Customer Name" required>
+
+    <input type="text" name="phone"
+           pattern="[0-9]{10,}"
+           title="Minimum 10 digits required"
+           class="form-control mb-2"
+           placeholder="Phone Number"
+           required>
+
+    <input type="number" name="room_no" class="form-control mb-2" placeholder="Room Number" required>
+
+    <button class="btn btn-success">Book Room</button>
+</form>
+
+{% endblock %}
